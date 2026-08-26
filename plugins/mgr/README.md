@@ -6,8 +6,6 @@
 
 - `skills/mgr-babysit-pr/SKILL.md`：持续监控 Codex PR review、CI、冲突和评论回复。
 - `skills/mgr-babysit-pr/scripts/wait-codex-review.sh`：轮询脚本，保留 `--ignore-check` 和 0–5 退出码约定。
-- `skills/mgr-babysit-pr/scripts/test_wait-codex-review.sh`：离线脚本行为校验。
-
 脚本使用自身的 `$BASH_SOURCE` 解析目录，因此从任意当前目录调用都不会依赖调用者的工作目录。
 
 ## 安装与发布边界
