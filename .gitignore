@@ -1,0 +1,12 @@
+# macOS metadata
+**/._*
+._*
+
+# Pi runtime/task artifacts
+**/.pi/
+
+# Temporary taskbooks and generated reports
+**/tmp-*
+spaces/tmp/herdr-ime-task.md
+spaces/tmp/openrouter-usage-last-7d.html
+spaces/tmp/openrouter-usage-last-7d-summary.md
