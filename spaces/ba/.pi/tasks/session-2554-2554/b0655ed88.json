@@ -1,0 +1,20 @@
+{
+  "id": "b0655ed88",
+  "name": "等待线上核验",
+  "command": "herdr agent wait verify-1868-beta22",
+  "description": "等待 Codex 完成 PR #1868、beta.22 和指定会话的只读线上核验",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b0655ed88.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787558991437,
+  "endTime": 1787559388217,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 17741,
+  "bytesWritten": 596,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

@@ -1,0 +1,19 @@
+{
+  "id": "b71972e71",
+  "name": "Wait auth skill refactor",
+  "command": "herdr agent wait refactor-auth-skill",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b71972e71.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787298699706,
+  "endTime": 1787299196477,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 20728,
+  "bytesWritten": 722,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

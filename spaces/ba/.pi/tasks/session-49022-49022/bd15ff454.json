@@ -1,0 +1,19 @@
+{
+  "id": "bd15ff454",
+  "name": "Wait sandbox ideal design",
+  "command": "herdr agent wait inspect-sandbox-arch",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/bd15ff454.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787306687989,
+  "endTime": 1787306940941,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 5036,
+  "bytesWritten": 596,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

@@ -1,0 +1,20 @@
+{
+  "id": "bdcb956e8",
+  "name": "等待 1949 babysit",
+  "command": "herdr agent wait fix-model-send-ui",
+  "description": "等待 Codex babysit PR1949 直至最新 head 明确通过",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bdcb956e8.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787741392314,
+  "endTime": 1787741951627,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 66160,
+  "bytesWritten": 702,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

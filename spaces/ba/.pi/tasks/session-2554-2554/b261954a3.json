@@ -1,0 +1,20 @@
+{
+  "id": "b261954a3",
+  "name": "等待常规模式修复",
+  "command": "herdr agent wait fix-standard-mode-context",
+  "description": "等待 Codex 完成常规模式隐藏上下文注入的修复、测试和 PR 创建",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b261954a3.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787559082391,
+  "endTime": 1787559697151,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 19244,
+  "bytesWritten": 723,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

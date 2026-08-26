@@ -1,0 +1,21 @@
+{
+  "id": "b72bb3a61",
+  "name": "等待 OAuth Hook 调查",
+  "command": "herdr agent wait debug-oauth-provision-hook",
+  "description": "等待 Codex 调查 blade-oauth provision hook 是否遗漏飞书登录",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-2554-2554/b72bb3a61.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787572175311,
+  "endTime": 1787572601409,
+  "exitCode": 1,
+  "signal": null,
+  "pid": 90324,
+  "bytesWritten": 119,
+  "isAgent": false,
+  "error": "Exited with code 1",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

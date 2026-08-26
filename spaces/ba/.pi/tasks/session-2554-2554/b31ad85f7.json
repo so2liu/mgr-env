@@ -1,0 +1,20 @@
+{
+  "id": "b31ad85f7",
+  "name": "等待浏览器提示修复",
+  "command": "herdr agent wait browser-takeover-message",
+  "description": "等待 Codex 完成浏览器接管提示文案修改、测试和 PR 创建",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b31ad85f7.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787563993072,
+  "endTime": 1787564978267,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 15470,
+  "bytesWritten": 698,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

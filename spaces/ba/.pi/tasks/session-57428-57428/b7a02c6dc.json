@@ -1,0 +1,19 @@
+{
+  "id": "b7a02c6dc",
+  "name": "Wait 1820 babysit merge",
+  "command": "herdr agent wait fix-1820-sandbox",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-57428-57428/b7a02c6dc.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787291680311,
+  "endTime": 1787292148406,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 3101,
+  "bytesWritten": 687,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

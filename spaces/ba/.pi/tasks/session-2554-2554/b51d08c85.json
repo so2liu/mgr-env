@@ -1,0 +1,20 @@
+{
+  "id": "b51d08c85",
+  "name": "等待 1956 1957 修复",
+  "command": "herdr agent wait fix-1956-1957",
+  "description": "等待 Codex 修复 #1956/#1957 开发者模式时间线与 context 分割线并创建 PR",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b51d08c85.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787736293572,
+  "endTime": 1787737136933,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 68240,
+  "bytesWritten": 724,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

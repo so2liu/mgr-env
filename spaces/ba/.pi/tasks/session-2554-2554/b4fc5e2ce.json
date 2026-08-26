@@ -1,0 +1,20 @@
+{
+  "id": "b4fc5e2ce",
+  "name": "等待 prodapp HTTP2 修复",
+  "command": "herdr agent wait fix-prodapp-http2",
+  "description": "等待 Codex 完成 issue #1895 的 prodapp Nginx HTTP/2 线上修复与验证",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b4fc5e2ce.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787622497761,
+  "endTime": 1787622758503,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 94407,
+  "bytesWritten": 584,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

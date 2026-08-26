@@ -1,0 +1,19 @@
+{
+  "id": "beeb34ec2",
+  "name": "Wait restart sandbox PR",
+  "command": "herdr agent wait feat-restart-sandbox",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/beeb34ec2.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787304782007,
+  "endTime": 1787305489424,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 58672,
+  "bytesWritten": 668,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

@@ -1,0 +1,20 @@
+{
+  "id": "b719766cd",
+  "name": "等待 v1.0.14 非 latest 发布",
+  "command": "herdr agent wait patch-v1014-release",
+  "description": "等待 Codex 完成 release/v1.0.14 非 latest patch 镜像方案与配置调整并创建 PR",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b719766cd.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787733594172,
+  "endTime": 1787734090008,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 15910,
+  "bytesWritten": 694,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

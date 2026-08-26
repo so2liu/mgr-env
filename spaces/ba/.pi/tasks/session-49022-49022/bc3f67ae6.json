@@ -1,0 +1,19 @@
+{
+  "id": "bc3f67ae6",
+  "name": "Wait 1823 babysit",
+  "command": "herdr agent wait feat-chat-view-modes",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/bc3f67ae6.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787302647013,
+  "endTime": 1787304972074,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 7427,
+  "bytesWritten": 690,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

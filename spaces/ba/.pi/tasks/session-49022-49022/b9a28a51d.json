@@ -1,0 +1,19 @@
+{
+  "id": "b9a28a51d",
+  "name": "Wait 2608 beta2 release",
+  "command": "herdr agent wait fix-2608-beta2",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b9a28a51d.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787312858721,
+  "endTime": 1787313392439,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 19113,
+  "bytesWritten": 708,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

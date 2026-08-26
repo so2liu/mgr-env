@@ -1,0 +1,20 @@
+{
+  "id": "b25aa1c0e",
+  "name": "Wait skill-mount inspect",
+  "command": "herdr agent wait inspect-skill-mount --until idle --timeout 1200000",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-8637-8637/b25aa1c0e.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787287095507,
+  "endTime": 1787288295558,
+  "exitCode": 1,
+  "signal": null,
+  "pid": 31196,
+  "bytesWritten": 98,
+  "isAgent": false,
+  "error": "Exited with code 1",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 1210
+}

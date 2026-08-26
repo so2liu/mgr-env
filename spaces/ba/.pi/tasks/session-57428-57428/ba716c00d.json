@@ -1,0 +1,19 @@
+{
+  "id": "ba716c00d",
+  "name": "Wait box sf beta17",
+  "command": "herdr agent wait box-sf-beta17",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-57428-57428/ba716c00d.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787291438605,
+  "endTime": 1787292238755,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 98030,
+  "bytesWritten": 576,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

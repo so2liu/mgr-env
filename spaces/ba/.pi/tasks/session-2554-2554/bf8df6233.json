@@ -1,0 +1,20 @@
+{
+  "id": "bf8df6233",
+  "name": "等待 prodapp 性能调查",
+  "command": "herdr agent wait debug-prodapp-slow-loadtest",
+  "description": "等待 prodapp SSH 变慢与压测/飞书线索综合调查完成并自动通知",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bf8df6233.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787640008303,
+  "endTime": 1787640787045,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 88580,
+  "bytesWritten": 606,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

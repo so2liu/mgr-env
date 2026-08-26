@@ -1,0 +1,20 @@
+{
+  "id": "b7942c95d",
+  "name": "等待 PR1943 解冲突完成",
+  "command": "herdr agent wait backport-project-export-main",
+  "description": "等待 Codex 解决 PR1943 冲突并完成 CI/review babysit",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-2554-2554/b7942c95d.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787727932784,
+  "endTime": 1787727939867,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 92056,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

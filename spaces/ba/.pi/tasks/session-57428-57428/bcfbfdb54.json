@@ -1,0 +1,19 @@
+{
+  "id": "bcfbfdb54",
+  "name": "Wait inspect intelligent-app",
+  "command": "herdr agent wait inspect-intelligent-app",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-57428-57428/bcfbfdb54.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787289455256,
+  "endTime": 1787290219252,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 66428,
+  "bytesWritten": 597,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

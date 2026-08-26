@@ -1,0 +1,19 @@
+{
+  "id": "bff1c8a8d",
+  "name": "Wait 1826 babysit",
+  "command": "herdr agent wait feat-doubao-fold",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/bff1c8a8d.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787306092233,
+  "endTime": 1787307914336,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 90912,
+  "bytesWritten": 684,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

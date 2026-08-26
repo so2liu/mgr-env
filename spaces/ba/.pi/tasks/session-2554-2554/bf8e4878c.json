@@ -1,0 +1,20 @@
+{
+  "id": "bf8e4878c",
+  "name": "等待 PR1943 解冲突",
+  "command": "herdr agent wait backport-project-export-main",
+  "description": "等待 Codex 解决 PR1943 与 main 的冲突并完成 CI/review babysit",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bf8e4878c.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787727854769,
+  "endTime": 1787728412559,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 89923,
+  "bytesWritten": 691,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

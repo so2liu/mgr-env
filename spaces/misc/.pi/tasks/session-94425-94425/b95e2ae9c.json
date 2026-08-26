@@ -1,0 +1,20 @@
+{
+  "id": "b95e2ae9c",
+  "name": "等待发布完成",
+  "command": "herdr agent wait publish-mgr-env",
+  "description": "等待 Codex 完成安全筛选、提交并发布 GitHub 仓库",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-94425-94425/b95e2ae9c.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/misc",
+  "startTime": 1787751718670,
+  "endTime": 1787751719623,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 99887,
+  "bytesWritten": 512,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

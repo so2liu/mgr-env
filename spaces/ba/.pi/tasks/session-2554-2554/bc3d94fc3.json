@@ -1,0 +1,20 @@
+{
+  "id": "bc3d94fc3",
+  "name": "等待 babysit skill 方案调研",
+  "command": "herdr agent wait investigate-babysit-skill",
+  "description": "等待 Codex 调研 babysit-pr skill 全局共享与单权威源方案（只设计不实施）",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bc3d94fc3.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787742455493,
+  "endTime": 1787742927175,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 86391,
+  "bytesWritten": 710,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

@@ -1,0 +1,20 @@
+{
+  "id": "b88004501",
+  "name": "等待刘扬项目排查",
+  "command": "herdr agent wait debug-prodapp-deploy-404",
+  "description": "等待原 Codex 现场会话完成刘扬项目文件夹丢失的只读排查",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b88004501.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787621226006,
+  "endTime": 1787621913584,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 70812,
+  "bytesWritten": 603,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

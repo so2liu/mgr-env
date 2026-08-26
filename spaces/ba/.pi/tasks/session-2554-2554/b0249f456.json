@@ -1,0 +1,20 @@
+{
+  "id": "b0249f456",
+  "name": "等待 PR 1892 复审",
+  "command": "herdr agent wait standard-mode-hide-files",
+  "description": "等待 Codex 处理 PR #1892 残留 review thread 并完成最新 head 复审",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b0249f456.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787569451106,
+  "endTime": 1787572216406,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 35165,
+  "bytesWritten": 698,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

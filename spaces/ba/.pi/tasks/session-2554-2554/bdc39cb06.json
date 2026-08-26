@@ -1,0 +1,17 @@
+{
+  "id": "bdc39cb06",
+  "name": "等待 1965 Codex 终态",
+  "command": "herdr agent wait feishu-today-feedback",
+  "description": "等待 Codex 对 PR1965 最新 head 出明确终态并回报",
+  "status": "running",
+  "outputPath": ".pi/tasks/session-2554-2554/bdc39cb06.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787751343911,
+  "pid": 93714,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

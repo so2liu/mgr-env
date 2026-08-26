@@ -1,0 +1,20 @@
+{
+  "id": "b297498e3",
+  "name": "等待 box 清理完成",
+  "command": "herdr agent wait deploy-pr1913-box-mapping",
+  "description": "等待 Codex 完成 box 安全清理、空间复核和健康检查",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b297498e3.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787651737150,
+  "endTime": 1787652529620,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 198,
+  "bytesWritten": 725,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

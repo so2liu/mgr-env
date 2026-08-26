@@ -1,0 +1,20 @@
+{
+  "id": "b2f0f82f6",
+  "name": "等待完整内容修复",
+  "command": "herdr agent wait full-tool-content-display",
+  "description": "等待 Codex 定位 #1880 遗漏并修复工具内容无法完整显示的问题",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b2f0f82f6.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787567057503,
+  "endTime": 1787568896248,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 79051,
+  "bytesWritten": 701,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

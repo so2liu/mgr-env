@@ -1,0 +1,20 @@
+{
+  "id": "b23da6b67",
+  "name": "等待移除生成文案",
+  "command": "herdr agent wait remove-generating-label",
+  "description": "等待 Codex 完成移除“正在生成……”文案的修复、测试和 PR 创建",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b23da6b67.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787562352272,
+  "endTime": 1787563960940,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 75161,
+  "bytesWritten": 695,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

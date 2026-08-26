@@ -1,0 +1,20 @@
+{
+  "id": "bea769d01",
+  "name": "等待 GPU22 Gateway 调查",
+  "command": "herdr agent wait investigate-gpu22-gateway",
+  "description": "等待 Codex 只读排查 prodapp LLM Gateway 访问 GPU22 API 返回 404 的根因",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bea769d01.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787725879645,
+  "endTime": 1787726473873,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 53859,
+  "bytesWritten": 710,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

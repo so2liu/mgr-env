@@ -1,0 +1,20 @@
+{
+  "id": "b411269d3",
+  "name": "等待 prodapp 旧调查",
+  "command": "herdr agent wait debug-prodapp-deploy-404",
+  "description": "等待 prodapp 用户目录与 Blade OS 相关调查任务进入 settled 状态并自动通知",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b411269d3.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787640008304,
+  "endTime": 1787640008319,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 88581,
+  "bytesWritten": 602,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

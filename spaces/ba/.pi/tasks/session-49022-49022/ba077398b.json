@@ -1,0 +1,19 @@
+{
+  "id": "ba077398b",
+  "name": "Wait box 2608 beta2 test",
+  "command": "herdr agent wait box-2608-beta2",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/ba077398b.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787321981799,
+  "endTime": 1787323193195,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 56030,
+  "bytesWritten": 578,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

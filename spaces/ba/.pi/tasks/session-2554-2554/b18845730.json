@@ -1,0 +1,20 @@
+{
+  "id": "b18845730",
+  "name": "等待 1953 Codex 复核",
+  "command": "herdr agent wait fix-file-tag-tooltip",
+  "description": "等待 Codex 在 PR1953 最新 head 上获取明确通过信号",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b18845730.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787732981494,
+  "endTime": 1787734037924,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 3047,
+  "bytesWritten": 683,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

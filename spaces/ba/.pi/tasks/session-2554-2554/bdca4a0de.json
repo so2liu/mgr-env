@@ -1,0 +1,21 @@
+{
+  "id": "bdca4a0de",
+  "name": "等待 2608 分支风险审计",
+  "command": "herdr agent wait audit-release-2608",
+  "description": "等待 Codex 完成 2608/2608.0.4 收口到 release/2608 的可行性与风险报告",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-2554-2554/bdca4a0de.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787730285056,
+  "endTime": 1787730627694,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 43019,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "error": "Killed during Pi session shutdown/reload",
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

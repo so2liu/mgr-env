@@ -1,0 +1,20 @@
+{
+  "id": "b28d4d561",
+  "name": "等待项目导出修复",
+  "command": "herdr agent wait fix-project-export-beta",
+  "description": "等待 Codex 定位并修复 v2608.0.4 项目导出 Not Found 问题并创建 PR",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b28d4d561.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787663022507,
+  "endTime": 1787663742359,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 95949,
+  "bytesWritten": 690,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

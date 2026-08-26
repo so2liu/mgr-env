@@ -1,0 +1,21 @@
+{
+  "id": "b73a9fe83",
+  "name": "等待模型发送 UI 修复",
+  "command": "herdr agent wait fix-model-send-ui",
+  "description": "等待 Codex 修复模型选择发送竞态和错误提示布局并创建 PR、完成 babysit",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-2554-2554/b73a9fe83.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787727932783,
+  "endTime": 1787730627694,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 92055,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "error": "Killed during Pi session shutdown/reload",
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

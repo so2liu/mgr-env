@@ -1,0 +1,20 @@
+{
+  "id": "bd1d6ba8e",
+  "name": "等待内容可见修复",
+  "command": "herdr agent wait fix-hidden-content",
+  "description": "等待 Codex 完成内容不可见问题的定位、修复、测试和 PR 创建",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bd1d6ba8e.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787562640388,
+  "endTime": 1787565007196,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 82100,
+  "bytesWritten": 692,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

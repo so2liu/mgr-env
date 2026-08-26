@@ -1,0 +1,19 @@
+{
+  "id": "bfe1d2988",
+  "name": "Wait 1828 followup reviews",
+  "command": "herdr agent wait feat-restart-sandbox",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/bfe1d2988.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787307782026,
+  "endTime": 1787308127210,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 30004,
+  "bytesWritten": 668,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

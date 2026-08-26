@@ -1,0 +1,20 @@
+{
+  "id": "b5dfb50ee",
+  "name": "Wait doubao fold PR",
+  "command": "herdr agent wait feat-doubao-fold",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-49022-49022/b5dfb50ee.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787302470729,
+  "endTime": 1787306070756,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 2634,
+  "bytesWritten": 50,
+  "isAgent": false,
+  "error": "Timed out after 3600s",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 3600
+}

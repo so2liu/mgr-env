@@ -1,0 +1,19 @@
+{
+  "id": "b7ab618fe",
+  "name": "Wait compaction inspect",
+  "command": "herdr agent wait inspect-compaction",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b7ab618fe.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787297020209,
+  "endTime": 1787300067753,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 89569,
+  "bytesWritten": 593,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

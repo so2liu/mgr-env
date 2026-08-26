@@ -1,0 +1,20 @@
+{
+  "id": "b2ea188bd",
+  "name": "等待 1959 babysit",
+  "command": "herdr agent wait fix-1956-1957",
+  "description": "等待 Codex babysit PR1959 直至最新 head 明确通过",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b2ea188bd.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787737229411,
+  "endTime": 1787739400633,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 87201,
+  "bytesWritten": 724,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

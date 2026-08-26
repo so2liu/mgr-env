@@ -1,0 +1,20 @@
+{
+  "id": "b8e8abad5",
+  "name": "等待主线项目导出修复",
+  "command": "herdr agent wait backport-project-export-main",
+  "description": "等待 Codex 将项目导出修复移植到 main 并创建 PR、完成 babysit",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b8e8abad5.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787721992037,
+  "endTime": 1787723626639,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 79141,
+  "bytesWritten": 691,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

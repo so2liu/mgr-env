@@ -1,0 +1,29 @@
+# 本地恢复/开发产生的依赖、缓存和构建文件
+node_modules/
+dist/
+build/
+.cache/
+.vite/
+coverage/
+
+# 临时内容与本地产物
+backlog.html
+tmp-*
+*.tmp
+*.swp
+*.swo
+*.log
+*.html
+!spaces/**/.pi/**/*.log
+
+# 凭据、密钥和环境文件（示例模板可显式加回）
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.secret
+credentials.json
+secrets.json

@@ -1,0 +1,21 @@
+{
+  "id": "b739bdb80",
+  "name": "等待 issue 1883 收口",
+  "command": "herdr agent wait fix-issue-1878",
+  "description": "等待 Codex 完成 PR #1883 的开发和 babysit 收口",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-2554-2554/b739bdb80.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787568683381,
+  "endTime": 1787583083421,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 14052,
+  "bytesWritten": 51,
+  "isAgent": false,
+  "error": "Timed out after 14400s",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

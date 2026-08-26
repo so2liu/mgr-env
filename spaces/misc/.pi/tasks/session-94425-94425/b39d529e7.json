@@ -1,0 +1,17 @@
+{
+  "id": "b39d529e7",
+  "name": "等待重新发布",
+  "command": "herdr agent wait publish-mgr-env",
+  "description": "等待 Codex 完成仓库筛选、安全检查与发布",
+  "status": "running",
+  "outputPath": ".pi/tasks/session-94425-94425/b39d529e7.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/misc",
+  "startTime": 1787751760740,
+  "pid": 2411,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

@@ -1,0 +1,20 @@
+{
+  "id": "b8353ac1f",
+  "name": "等待 prod212 清理",
+  "command": "herdr agent wait deploy-prod212-beta0",
+  "description": "等待 Codex 安全清理 prod212 磁盘并完成服务复核",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b8353ac1f.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787716982523,
+  "endTime": 1787719097434,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 81264,
+  "bytesWritten": 701,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

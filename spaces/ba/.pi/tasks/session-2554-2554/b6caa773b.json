@@ -1,0 +1,20 @@
+{
+  "id": "b6caa773b",
+  "name": "等待 1955 babysit 合并",
+  "command": "herdr agent wait patch-v1014-release",
+  "description": "等待 Codex babysit 并合并 PR1955（保留 pane 不关闭）",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b6caa773b.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787734250159,
+  "endTime": 1787739782149,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 29809,
+  "bytesWritten": 694,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

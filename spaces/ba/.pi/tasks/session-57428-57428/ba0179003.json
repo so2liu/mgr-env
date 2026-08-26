@@ -1,0 +1,20 @@
+{
+  "id": "ba0179003",
+  "name": "Wait analyze PR 1821",
+  "command": "herdr agent wait analyze-pr-1821",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-57428-57428/ba0179003.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787290243681,
+  "endTime": 1787290302325,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 79094,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "error": "Killed during Pi session shutdown/reload",
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

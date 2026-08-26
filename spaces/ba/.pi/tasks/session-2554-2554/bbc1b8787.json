@@ -1,0 +1,20 @@
+{
+  "id": "bbc1b8787",
+  "name": "Babysit PR1932",
+  "command": "herdr agent wait fix-project-export-beta",
+  "description": "等待 Codex 清理 PR1932 错误历史、解决冲突并完成 review/CI babysit",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bbc1b8787.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787666335006,
+  "endTime": 1787667344653,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 51948,
+  "bytesWritten": 690,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

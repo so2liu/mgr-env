@@ -1,0 +1,19 @@
+{
+  "id": "b569cb72b",
+  "name": "Wait 1824 babysit",
+  "command": "herdr agent wait refactor-auth-skill",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-49022-49022/b569cb72b.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787302647012,
+  "endTime": 1787302972242,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 7426,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

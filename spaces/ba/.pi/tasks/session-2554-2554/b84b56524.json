@@ -1,0 +1,20 @@
+{
+  "id": "b84b56524",
+  "name": "等待提问阶段展开",
+  "command": "herdr agent wait developer-question-expanded",
+  "description": "等待 Codex 修复开发者模式提问阶段默认折叠并创建 PR",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b84b56524.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787568478611,
+  "endTime": 1787569048729,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 9542,
+  "bytesWritten": 707,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

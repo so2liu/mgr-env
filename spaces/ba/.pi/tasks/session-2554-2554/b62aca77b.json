@@ -1,0 +1,20 @@
+{
+  "id": "b62aca77b",
+  "name": "等待多 PR 工具开发",
+  "command": "herdr agent wait analyze-multi-pr-check",
+  "description": "等待 Codex 在 ~/mgr 开发并验证批量 PR 快速检测 Pi 工具",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b62aca77b.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787729363322,
+  "endTime": 1787730085562,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 22966,
+  "bytesWritten": 703,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

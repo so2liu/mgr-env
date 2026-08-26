@@ -1,0 +1,20 @@
+{
+  "id": "b3c544a28",
+  "name": "等待 1965 P2 处理",
+  "command": "herdr agent wait feishu-today-feedback",
+  "description": "等待 Codex 处理 PR1965 最新 P2 review 意见并完成 babysit",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b3c544a28.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787750774041,
+  "endTime": 1787751294557,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 83417,
+  "bytesWritten": 706,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

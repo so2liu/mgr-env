@@ -1,0 +1,20 @@
+{
+  "id": "bdf551bb3",
+  "name": "等待 prod212 升级",
+  "command": "herdr agent wait deploy-prod212-beta0",
+  "description": "等待 Codex 完成 prod212 BA v2608.0.8-beta.0 升级和健康验证",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bdf551bb3.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787715355901,
+  "endTime": 1787716463053,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 53611,
+  "bytesWritten": 701,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

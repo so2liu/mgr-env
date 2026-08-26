@@ -1,0 +1,20 @@
+{
+  "id": "be37de4a7",
+  "name": "等待提问格式排查",
+  "command": "herdr agent wait debug-ask-user-format",
+  "description": "等待 Codex 完成 prodapp 指定会话的提问选项格式错误只读排查",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/be37de4a7.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787621293421,
+  "endTime": 1787621651234,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 73474,
+  "bytesWritten": 600,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

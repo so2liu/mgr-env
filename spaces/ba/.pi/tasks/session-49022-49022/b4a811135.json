@@ -1,0 +1,19 @@
+{
+  "id": "b4a811135",
+  "name": "Wait 1828 lock review",
+  "command": "herdr agent wait feat-restart-sandbox",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b4a811135.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787306991053,
+  "endTime": 1787307751663,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 12771,
+  "bytesWritten": 668,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

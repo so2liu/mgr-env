@@ -1,0 +1,19 @@
+{
+  "id": "b2bacf175",
+  "name": "Wait restart sandbox feat",
+  "command": "herdr agent wait feat-restart-sandbox",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b2bacf175.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787304004517,
+  "endTime": 1787304744482,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 39246,
+  "bytesWritten": 668,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

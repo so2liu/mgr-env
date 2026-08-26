@@ -1,0 +1,20 @@
+{
+  "id": "b713de8df",
+  "name": "继续等待 PR 1883",
+  "command": "herdr agent wait fix-issue-1878",
+  "description": "原等待器超时，子智能体仍在工作；继续等待 PR #1883 开发与 babysit 收口",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b713de8df.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787577323420,
+  "endTime": 1787584732174,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 94685,
+  "bytesWritten": 641,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

@@ -1,0 +1,19 @@
+{
+  "id": "b4dbd403f",
+  "name": "Wait sandbox browser inspect",
+  "command": "herdr agent wait inspect-sandbox-browser",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b4dbd403f.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787295433487,
+  "endTime": 1787296659760,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 61315,
+  "bytesWritten": 597,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

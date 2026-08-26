@@ -1,0 +1,21 @@
+{
+  "id": "b4e7665dc",
+  "name": "等待 issue 1878 修复",
+  "command": "herdr agent wait fix-issue-1878",
+  "description": "等待 Codex 完成 issue #1878 的排查、修复、测试和 PR 创建",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-2554-2554/b4e7665dc.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787562906918,
+  "endTime": 1787577306985,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 89696,
+  "bytesWritten": 51,
+  "isAgent": false,
+  "error": "Timed out after 14400s",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

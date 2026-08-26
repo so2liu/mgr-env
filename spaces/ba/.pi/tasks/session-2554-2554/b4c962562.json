@@ -1,0 +1,20 @@
+{
+  "id": "b4c962562",
+  "name": "等待 file tag tooltip 修复",
+  "command": "herdr agent wait fix-file-tag-tooltip",
+  "description": "等待 Codex 把文件列表 file tag 改成 tooltip、创建 PR 并完成 babysit",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b4c962562.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787731356465,
+  "endTime": 1787732796884,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 68493,
+  "bytesWritten": 683,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

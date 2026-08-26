@@ -1,0 +1,20 @@
+{
+  "id": "b114cc3ae",
+  "name": "等待多 PR 工具分析",
+  "command": "herdr agent wait analyze-multi-pr-check",
+  "description": "等待 Codex 完成批量 PR 快速检测工具的方案分析，不开发",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b114cc3ae.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787728649645,
+  "endTime": 1787729003440,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 8605,
+  "bytesWritten": 703,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

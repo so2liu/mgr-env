@@ -1,0 +1,20 @@
+{
+  "id": "ba2c477b6",
+  "name": "等待投影序号解释",
+  "command": "herdr agent wait explain-projection-seq",
+  "description": "等待 Codex 调查“助手 投影序号”字段的准确语义",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/ba2c477b6.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787563910642,
+  "endTime": 1787564261805,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 11269,
+  "bytesWritten": 600,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

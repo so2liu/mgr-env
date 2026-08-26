@@ -1,0 +1,21 @@
+{
+  "id": "b24452243",
+  "name": "等待上下文默认折叠修复",
+  "command": "herdr agent wait fix-context-collapse",
+  "description": "等待 Codex 修复上下文注入默认折叠、创建 PR 并完成 babysit",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-2554-2554/b24452243.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787730595015,
+  "endTime": 1787730627694,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 49631,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "error": "Killed during Pi session shutdown/reload",
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

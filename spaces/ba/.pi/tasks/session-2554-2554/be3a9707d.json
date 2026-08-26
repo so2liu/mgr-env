@@ -1,0 +1,20 @@
+{
+  "id": "be3a9707d",
+  "name": "等待 1885 复审",
+  "command": "herdr agent wait browser-takeover-message",
+  "description": "等待 Codex 完成 PR #1885 的最终复审和 CI 收口",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/be3a9707d.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787565000959,
+  "endTime": 1787565439150,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 40584,
+  "bytesWritten": 698,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

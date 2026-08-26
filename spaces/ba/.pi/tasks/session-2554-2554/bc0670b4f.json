@@ -1,0 +1,20 @@
+{
+  "id": "bc0670b4f",
+  "name": "等待 1892 最新复审",
+  "command": "herdr agent wait standard-mode-hide-files",
+  "description": "继续等待 PR #1892 最新 head 的 Codex 明确终态",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bc0670b4f.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787572245700,
+  "endTime": 1787580760293,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 91687,
+  "bytesWritten": 699,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

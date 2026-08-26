@@ -1,0 +1,20 @@
+{
+  "id": "b34486f4a",
+  "name": "等待 prodapp Sentry 配置",
+  "command": "herdr agent wait deploy-prodapp-beta27",
+  "description": "等待 Codex 从 prod212 安全读取 DSN 并配置 prodapp BA 的 Sentry",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b34486f4a.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787721130004,
+  "endTime": 1787722235708,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 62506,
+  "bytesWritten": 704,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

@@ -1,0 +1,19 @@
+{
+  "id": "b5854ad05",
+  "name": "Wait skill sandbox sync research",
+  "command": "herdr agent wait inspect-sandbox-arch",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b5854ad05.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787305587985,
+  "endTime": 1787306112511,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 77038,
+  "bytesWritten": 596,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

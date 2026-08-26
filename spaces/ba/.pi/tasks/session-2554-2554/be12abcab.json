@@ -1,0 +1,20 @@
+{
+  "id": "be12abcab",
+  "name": "等待 prodapp 404 排查",
+  "command": "herdr agent wait debug-prodapp-deploy-404",
+  "description": "等待 Codex 完成 prodapp 部署到 Blade OS 返回 404 的只读排查",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/be12abcab.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787568537542,
+  "endTime": 1787569160267,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 10601,
+  "bytesWritten": 602,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

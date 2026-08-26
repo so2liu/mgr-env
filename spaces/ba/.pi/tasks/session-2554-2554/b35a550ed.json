@@ -1,0 +1,20 @@
+{
+  "id": "b35a550ed",
+  "name": "等待 PR1913 盒子部署",
+  "command": "herdr agent wait deploy-pr1913-box-mapping",
+  "description": "等待 Codex 完成 PR1913 feature 分支在 box 上的代码映射部署和验证",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b35a550ed.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787649516575,
+  "endTime": 1787650035426,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 64296,
+  "bytesWritten": 726,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

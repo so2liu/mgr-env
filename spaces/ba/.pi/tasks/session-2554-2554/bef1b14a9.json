@@ -1,0 +1,20 @@
+{
+  "id": "bef1b14a9",
+  "name": "等待 Sentry 问题修复",
+  "command": "herdr agent wait fix-sentry-empty-history",
+  "description": "等待 Codex 修复 issue #1942 的空历史高噪声错误并完成 PR babysit",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/bef1b14a9.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787722300526,
+  "endTime": 1787722854596,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 87567,
+  "bytesWritten": 703,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

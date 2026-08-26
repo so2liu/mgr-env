@@ -1,0 +1,20 @@
+{
+  "id": "b65465195",
+  "name": "等待原会话 OAuth 调查",
+  "command": "herdr agent wait debug-prodapp-deploy-404",
+  "description": "等待原 prodapp 404 Codex 会话继续调查 blade-oauth hook 与飞书登录链路",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b65465195.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787572596627,
+  "endTime": 1787573371031,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 98381,
+  "bytesWritten": 602,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

@@ -1,0 +1,20 @@
+{
+  "id": "b4a93a532",
+  "name": "等待 1965 babysit 推动",
+  "command": "herdr agent wait feishu-today-feedback",
+  "description": "等待 Codex 处理 PR1965 的 unresolved thread 并完成 babysit",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b4a93a532.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787749503705,
+  "endTime": 1787750571557,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 61744,
+  "bytesWritten": 706,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

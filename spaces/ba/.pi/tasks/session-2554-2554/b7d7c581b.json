@@ -1,0 +1,20 @@
+{
+  "id": "b7d7c581b",
+  "name": "等待 prodapp 升级",
+  "command": "herdr agent wait deploy-prodapp-beta27",
+  "description": "等待 Codex 完成 prodapp BA beta27 生产升级、健康检查和回滚记录",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b7d7c581b.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787710350841,
+  "endTime": 1787711632108,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 71848,
+  "bytesWritten": 704,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

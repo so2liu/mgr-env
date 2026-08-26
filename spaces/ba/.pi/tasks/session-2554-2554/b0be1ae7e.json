@@ -1,0 +1,20 @@
+{
+  "id": "b0be1ae7e",
+  "name": "调查外部 Solution 挂载",
+  "command": "herdr agent wait investigate-ba-260804-skills",
+  "description": "等待 Codex 调查新增外部 Solution 是否可在 sandbox 启动时直接挂载 skills",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b0be1ae7e.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787631022289,
+  "endTime": 1787631124486,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 39100,
+  "bytesWritten": 607,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

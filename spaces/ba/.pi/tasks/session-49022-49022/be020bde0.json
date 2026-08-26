@@ -1,0 +1,19 @@
+{
+  "id": "be020bde0",
+  "name": "Wait deeper simplify inspect",
+  "command": "herdr agent wait inspect-code-simplify",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/be020bde0.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787298699704,
+  "endTime": 1787300069115,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 20727,
+  "bytesWritten": 596,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

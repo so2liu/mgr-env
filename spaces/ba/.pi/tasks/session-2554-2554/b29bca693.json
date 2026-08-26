@@ -1,0 +1,21 @@
+{
+  "id": "b29bca693",
+  "name": "继续等待 PR 1849",
+  "command": "herdr agent wait memory-v2-babysit",
+  "description": "原等待器超时，Codex 仍在处理 PR #1849；继续等待 review 与 CI 收口",
+  "status": "failed",
+  "outputPath": ".pi/tasks/session-2554-2554/b29bca693.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787583211161,
+  "endTime": 1787584447359,
+  "exitCode": 1,
+  "signal": null,
+  "pid": 18599,
+  "bytesWritten": 119,
+  "isAgent": false,
+  "error": "Exited with code 1",
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

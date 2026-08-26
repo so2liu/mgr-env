@@ -1,0 +1,19 @@
+{
+  "id": "bb3a0b10e",
+  "name": "Wait display modes PR",
+  "command": "herdr agent wait feat-chat-view-modes",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/bb3a0b10e.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787296994151,
+  "endTime": 1787297155607,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 88983,
+  "bytesWritten": 690,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 3600
+}

@@ -1,0 +1,20 @@
+{
+  "id": "be7440627",
+  "name": "Wait fix 1820 sandbox",
+  "command": "herdr agent wait fix-1820-sandbox",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-57428-57428/be7440627.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787289455258,
+  "endTime": 1787290302326,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 66429,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "error": "Killed during Pi session shutdown/reload",
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

@@ -1,0 +1,20 @@
+{
+  "id": "b7e42823e",
+  "name": "等待思考映射任务",
+  "command": "herdr agent wait auto-thinking-strength-mapping",
+  "description": "等待 auto-thinking-strength-mapping 子智能体进入 settled 状态并自动通知主控",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b7e42823e.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787558405291,
+  "endTime": 1787559147283,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 3885,
+  "bytesWritten": 716,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

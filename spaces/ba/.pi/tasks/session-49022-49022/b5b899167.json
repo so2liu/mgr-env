@@ -1,0 +1,19 @@
+{
+  "id": "b5b899167",
+  "name": "Wait chat input bugfix",
+  "command": "herdr agent wait feat-chat-view-modes",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/b5b899167.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787296578601,
+  "endTime": 1787296886018,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 80773,
+  "bytesWritten": 690,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 7200
+}

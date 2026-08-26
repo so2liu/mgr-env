@@ -1,0 +1,20 @@
+{
+  "id": "b40dbd5a4",
+  "name": "等待普通模式隐藏文件",
+  "command": "herdr agent wait standard-mode-hide-files",
+  "description": "等待 Codex 修复普通模式文件信息展示并创建 PR",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b40dbd5a4.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787568593657,
+  "endTime": 1787569405258,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 11805,
+  "bytesWritten": 698,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

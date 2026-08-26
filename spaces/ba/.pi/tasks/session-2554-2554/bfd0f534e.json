@@ -1,0 +1,21 @@
+{
+  "id": "bfd0f534e",
+  "name": "等待 prodapp 性能调查",
+  "command": "herdr agent wait debug-prodapp-slow-loadtest",
+  "description": "等待 Codex 完成 prodapp SSH 变慢、昨晚压测日志和飞书记录的综合只读调查",
+  "status": "killed",
+  "outputPath": ".pi/tasks/session-2554-2554/bfd0f534e.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787639561933,
+  "endTime": 1787639685032,
+  "exitCode": null,
+  "signal": "SIGTERM",
+  "pid": 81442,
+  "bytesWritten": 0,
+  "isAgent": false,
+  "error": "Killed during Pi session shutdown/reload",
+  "notified": false,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

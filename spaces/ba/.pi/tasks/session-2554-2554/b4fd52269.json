@@ -1,0 +1,20 @@
+{
+  "id": "b4fd52269",
+  "name": "等待历史闪烁任务",
+  "command": "herdr agent wait history-new-session-flicker",
+  "description": "等待 history-new-session-flicker 子智能体进入 settled 状态并自动通知主控",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b4fd52269.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787558405288,
+  "endTime": 1787559205213,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 3883,
+  "bytesWritten": 707,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

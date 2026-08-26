@@ -1,0 +1,20 @@
+{
+  "id": "b4eccee39",
+  "name": "监督 AskUser 修复",
+  "command": "herdr agent wait debug-ask-user-format",
+  "description": "监督 debug-ask-user-format Codex 的开发、测试和后续收口",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b4eccee39.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787627419975,
+  "endTime": 1787628514642,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 76261,
+  "bytesWritten": 600,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}

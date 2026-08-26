@@ -1,0 +1,20 @@
+{
+  "id": "b3a5e4ef7",
+  "name": "等待会话 0611 调查",
+  "command": "herdr agent wait investigate-session-0611",
+  "description": "等待 Codex 只读分析会话 0611 的停止/多轮与 context 注入问题",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-2554-2554/b3a5e4ef7.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787732374787,
+  "endTime": 1787732880028,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 89466,
+  "bytesWritten": 709,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 21600
+}

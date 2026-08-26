@@ -1,0 +1,19 @@
+{
+  "id": "be40093ff",
+  "name": "Wait model detect PR babysit",
+  "command": "herdr agent wait fix-model-autodetect",
+  "status": "completed",
+  "outputPath": ".pi/tasks/session-49022-49022/be40093ff.output",
+  "cwd": "/Users/yangliu35/mgr/spaces/ba",
+  "startTime": 1787302296450,
+  "endTime": 1787307172625,
+  "exitCode": 0,
+  "signal": null,
+  "pid": 97545,
+  "bytesWritten": 680,
+  "isAgent": false,
+  "notified": true,
+  "notifyOnCompletion": true,
+  "triggerOnCompletion": true,
+  "timeoutSeconds": 14400
+}
