@@ -119,18 +119,21 @@ echo "[babysit] Watching PR #${PR} on ${REPO}"
 # Single GraphQL call returns both the unresolved thread ids (split by author)
 # and a boolean "has_codex_review" indicating Codex has touched this PR at all.
 fetch_review_state() {
-    gh api graphql \
+    local cursor="null" raw combined='{"threads":[],"reviews":[]}'
+    while :; do
+      raw=$(gh api graphql \
         -f query='
-          query($owner: String!, $repo: String!, $pr: Int!) {
+          query($owner: String!, $repo: String!, $pr: Int!, $after: String) {
             repository(owner: $owner, name: $repo) {
               pullRequest(number: $pr) {
-                reviewThreads(first: 100) {
+                reviewThreads(first: 100, after: $after) {
                   nodes {
                     isResolved
                     comments(first: 1) {
                       nodes { databaseId author { login } }
                     }
                   }
+                  pageInfo { hasNextPage endCursor }
                 }
                 reviews(last: 100) {
                   nodes {
@@ -142,14 +145,19 @@ fetch_review_state() {
               }
             }
           }' \
-        -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" \
-        | jq --arg bot "$CODEX_BOT" --arg head "$HEAD_SHA" --arg after "$INVOCATION_STARTED_AT" '
-            .data.repository.pullRequest as $pr
-            | $pr.reviewThreads.nodes as $threads
+        -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" -F after="$cursor") || return 1
+      combined=$(jq -s '{threads: (.[0].data.repository.pullRequest.reviewThreads.nodes // []) + (.[1].threads // []), reviews: (.[0].data.repository.pullRequest.reviews.nodes // []) + (.[1].reviews // [])}' \
+        <(jq '{threads:(.data.repository.pullRequest.reviewThreads.nodes // []),reviews:(.data.repository.pullRequest.reviews.nodes // [])}' <<<"$raw") <(jq '.' <<<"$combined")) || return 1
+      if [[ "$(jq -r '.data.repository.pullRequest.reviewThreads.pageInfo.hasNextPage // false' <<<"$raw")" != true ]]; then break; fi
+      cursor=$(jq -r '.data.repository.pullRequest.reviewThreads.pageInfo.endCursor // empty' <<<"$raw")
+      [[ -n "$cursor" ]] || break
+    done
+    jq --arg bot "$CODEX_BOT" --arg head "$HEAD_SHA" --arg after "$INVOCATION_STARTED_AT" '
+            . as $all
             | {
-                has_current_codex_review: ([$pr.reviews.nodes[] | select(.author.login == $bot and .commit.oid == $head and (.submittedAt // "") >= $after)] | length > 0),
-                codex: [ $threads[] | select(.isResolved == false and .comments.nodes[0].author.login == $bot) | .comments.nodes[0].databaseId ],
-                others: [ $threads[] | select(.isResolved == false and .comments.nodes[0].author.login != $bot) | .comments.nodes[0].databaseId ]
+                has_current_codex_review: ([$all.reviews[] | select(.author.login == $bot and .commit.oid == $head and (.submittedAt // "") >= $after)] | length > 0),
+                codex: [ $all.threads[] | select(.isResolved == false and .comments.nodes[0].author.login == $bot) | .comments.nodes[0].databaseId ],
+                others: [ $all.threads[] | select(.isResolved == false and .comments.nodes[0].author.login != $bot) | .comments.nodes[0].databaseId ]
               }'
 }
 
@@ -165,15 +173,15 @@ while (( poll_count < MAX_POLLS )); do
     fi
 
     # --- Check 1: CI Actions status ---
-    checks=$(gh pr checks "$PR" --repo "$REPO" --json name,state 2>&1)
+    checks=$(gh pr checks "$PR" --repo "$REPO" --json name,state,bucket 2>&1)
     checks_status=$?
     if ! jq -e 'type == "array"' <<<"$checks" >/dev/null 2>&1; then
-        echo "[babysit] WARNING: Failed to fetch CI checks (exit ${checks_status}): $checks" >&2
-        checks="[]"
+        echo "[babysit] Failed to fetch CI checks (exit ${checks_status}); refusing to fail open: $checks" >&2
+        exit 3
     fi
 
     failed_checks=$(jq -c --argjson ignored "$ignored_checks" \
-        '[.[] | select(.state == "FAILURE" or .state == "ERROR") | .name | select(. as $name | $ignored | index($name) | not)]' \
+        '[.[] | select((.bucket == "fail" or .state == "FAILURE" or .state == "ERROR" or .state == "CANCELLED" or .state == "TIMED_OUT" or .state == "ACTION_REQUIRED" or .state == "STARTUP_FAILURE") and (.name as $name | $ignored | index($name) | not)) | .name]' \
         <<<"$checks" 2>/dev/null) || failed_checks="[]"
 
     if [ "$failed_checks" != "[]" ] && [ -n "$failed_checks" ]; then
@@ -183,7 +191,7 @@ while (( poll_count < MAX_POLLS )); do
     fi
 
     pending_checks=$(jq \
-        '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS")] | length' \
+        '[.[] | select(.bucket == "pending" or .state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS")] | length' \
         <<<"$checks" 2>/dev/null) || pending_checks=0
 
     if (( pending_checks > 0 )); then
@@ -342,7 +350,7 @@ while (( poll_count < MAX_POLLS )); do
     # --- Check 5: Unreplied Codex issue comments ---
     # Codex sometimes posts reviews as issue-level comments instead of review threads.
     # Detect Codex issue comments that have no reply from the authenticated babysitter.
-    issue_comments=$(gh api "repos/${REPO}/issues/${PR}/comments" 2>&1) || {
+    issue_comments=$(gh api "repos/${REPO}/issues/${PR}/comments" --paginate --slurp 2>&1 | jq -s 'add // []') || {
         echo "[babysit] WARNING: Failed to fetch issue comments: $issue_comments" >&2
         issue_comments="[]"
     }
