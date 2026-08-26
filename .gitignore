@@ -14,6 +14,7 @@ tmp-*
 *.swo
 *.log
 *.html
+!spaces/**/backlog.html
 !spaces/**/.pi/**/*.log
 
 # 凭据、密钥和环境文件（示例模板可显式加回）
