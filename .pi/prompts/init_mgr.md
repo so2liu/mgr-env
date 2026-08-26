@@ -1,6 +1,12 @@
 ---
-description: 将 mgr 主控空间的 Herdr workspace 重命名为 ba、misc、tmp
+description: 首次使用 mgr 时准备 Codex 与插件，并将 workspace 重命名为 ba、misc、tmp
 ---
+首次使用 mgr 时，先确认 Codex CLI 可用，再准备 mgr Agent Plugin：
+
+1. 执行 `command -v codex` 和 `codex --version`。若未安装，按 Codex CLI 官方文档安装并重新验证；若安装失败，告知用户 mgr 依赖 Codex CLI，停止后续步骤。
+2. 阅读 https://agent-plugins.org/ 当前文档，确认兼容客户端提供从已发布 Git、归档或 registry 来源进行用户级/全局安装的命令。该站点定义插件格式，但规范不定义安装命令，也不是本插件的下载源；不要从当前本地 checkout 安装，也不要伪造安装成功。
+3. 使用兼容客户端的实际远程安装命令安装已发布的 `mgr` plugin，随后验证客户端能发现 `mgr-babysit-pr`，确认它在任意 space 可用。若插件尚未发布或客户端没有远程安装入口，报告阻塞并停止后续步骤。
+
 把当前 Herdr 会话中对应 mgr 主控空间的 workspace 重命名为：
 
 - `/Users/yangliu35/mgr/spaces/ba` → `ba`
