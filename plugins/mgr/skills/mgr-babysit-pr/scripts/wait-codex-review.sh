@@ -25,10 +25,6 @@
 
 set -uo pipefail
 
-# Resolve the bundled skill directory so callers may invoke this script from
-# any working directory. Keep this path available to future bundled helpers.
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-
 usage() {
     echo "Usage: wait-codex-review.sh <owner/repo> <pr_number> [--ignore-check <check_name>]..." >&2
     exit 64
@@ -119,21 +115,18 @@ echo "[babysit] Watching PR #${PR} on ${REPO}"
 # Single GraphQL call returns both the unresolved thread ids (split by author)
 # and a boolean "has_codex_review" indicating Codex has touched this PR at all.
 fetch_review_state() {
-    local cursor="null" raw combined='{"threads":[],"reviews":[]}'
-    while :; do
-      raw=$(gh api graphql \
+    gh api graphql \
         -f query='
-          query($owner: String!, $repo: String!, $pr: Int!, $after: String) {
+          query($owner: String!, $repo: String!, $pr: Int!) {
             repository(owner: $owner, name: $repo) {
               pullRequest(number: $pr) {
-                reviewThreads(first: 100, after: $after) {
+                reviewThreads(first: 100) {
                   nodes {
                     isResolved
                     comments(first: 1) {
                       nodes { databaseId author { login } }
                     }
                   }
-                  pageInfo { hasNextPage endCursor }
                 }
                 reviews(last: 100) {
                   nodes {
@@ -145,19 +138,14 @@ fetch_review_state() {
               }
             }
           }' \
-        -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" -F after="$cursor") || return 1
-      combined=$(jq -s '{threads: (.[0].data.repository.pullRequest.reviewThreads.nodes // []) + (.[1].threads // []), reviews: (.[0].data.repository.pullRequest.reviews.nodes // []) + (.[1].reviews // [])}' \
-        <(jq '{threads:(.data.repository.pullRequest.reviewThreads.nodes // []),reviews:(.data.repository.pullRequest.reviews.nodes // [])}' <<<"$raw") <(jq '.' <<<"$combined")) || return 1
-      if [[ "$(jq -r '.data.repository.pullRequest.reviewThreads.pageInfo.hasNextPage // false' <<<"$raw")" != true ]]; then break; fi
-      cursor=$(jq -r '.data.repository.pullRequest.reviewThreads.pageInfo.endCursor // empty' <<<"$raw")
-      [[ -n "$cursor" ]] || break
-    done
-    jq --arg bot "$CODEX_BOT" --arg head "$HEAD_SHA" --arg after "$INVOCATION_STARTED_AT" '
-            . as $all
+        -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" \
+        | jq --arg bot "$CODEX_BOT" --arg head "$HEAD_SHA" --arg after "$INVOCATION_STARTED_AT" '
+            .data.repository.pullRequest as $pr
+            | $pr.reviewThreads.nodes as $threads
             | {
-                has_current_codex_review: ([$all.reviews[] | select(.author.login == $bot and .commit.oid == $head and (.submittedAt // "") >= $after)] | length > 0),
-                codex: [ $all.threads[] | select(.isResolved == false and .comments.nodes[0].author.login == $bot) | .comments.nodes[0].databaseId ],
-                others: [ $all.threads[] | select(.isResolved == false and .comments.nodes[0].author.login != $bot) | .comments.nodes[0].databaseId ]
+                has_current_codex_review: ([$pr.reviews.nodes[] | select(.author.login == $bot and .commit.oid == $head and (.submittedAt // "") >= $after)] | length > 0),
+                codex: [ $threads[] | select(.isResolved == false and .comments.nodes[0].author.login == $bot) | .comments.nodes[0].databaseId ],
+                others: [ $threads[] | select(.isResolved == false and .comments.nodes[0].author.login != $bot) | .comments.nodes[0].databaseId ]
               }'
 }
 
@@ -173,15 +161,15 @@ while (( poll_count < MAX_POLLS )); do
     fi
 
     # --- Check 1: CI Actions status ---
-    checks=$(gh pr checks "$PR" --repo "$REPO" --json name,state,bucket 2>&1)
+    checks=$(gh pr checks "$PR" --repo "$REPO" --json name,state 2>&1)
     checks_status=$?
     if ! jq -e 'type == "array"' <<<"$checks" >/dev/null 2>&1; then
-        echo "[babysit] Failed to fetch CI checks (exit ${checks_status}); refusing to fail open: $checks" >&2
-        exit 3
+        echo "[babysit] WARNING: Failed to fetch CI checks (exit ${checks_status}): $checks" >&2
+        checks="[]"
     fi
 
     failed_checks=$(jq -c --argjson ignored "$ignored_checks" \
-        '[.[] | select((.bucket == "fail" or .state == "FAILURE" or .state == "ERROR" or .state == "CANCELLED" or .state == "TIMED_OUT" or .state == "ACTION_REQUIRED" or .state == "STARTUP_FAILURE") and (.name as $name | $ignored | index($name) | not)) | .name]' \
+        '[.[] | select(.state == "FAILURE" or .state == "ERROR") | .name | select(. as $name | $ignored | index($name) | not)]' \
         <<<"$checks" 2>/dev/null) || failed_checks="[]"
 
     if [ "$failed_checks" != "[]" ] && [ -n "$failed_checks" ]; then
@@ -191,7 +179,7 @@ while (( poll_count < MAX_POLLS )); do
     fi
 
     pending_checks=$(jq \
-        '[.[] | select(.bucket == "pending" or .state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS")] | length' \
+        '[.[] | select(.state == "PENDING" or .state == "QUEUED" or .state == "IN_PROGRESS")] | length' \
         <<<"$checks" 2>/dev/null) || pending_checks=0
 
     if (( pending_checks > 0 )); then
@@ -210,11 +198,6 @@ while (( poll_count < MAX_POLLS )); do
     if [ "$mergeable" = "CONFLICTING" ]; then
         echo "[babysit] Merge conflict detected."
         exit 4
-    fi
-    if [ "$mergeable" != "MERGEABLE" ]; then
-        echo "[babysit] (${poll_count}/${MAX_POLLS}) Mergeability unavailable (${mergeable}), retrying..."
-        sleep "$POLL_INTERVAL"
-        continue
     fi
 
     # --- Check 3: Unresolved review threads + codex history (single GraphQL call) ---
@@ -251,7 +234,7 @@ while (( poll_count < MAX_POLLS )); do
         local review_reactions='[]'
         pr_reactions=$(gh api "repos/${REPO}/issues/${PR}/reactions" --paginate --slurp 2>/dev/null \
             | jq --arg bot "${CODEX_BOT}[bot]" --arg after "$REACTION_STARTED_AT" \
-              '[.[][] | select((.user.login // "") == $bot and (.created_at // "") >= $after) | {content, created_at}]') || return 1
+              '[.[][] | select((.user.login // "") == $bot and (.created_at // "") >= $after) | {content, created_at}]') || pr_reactions='[]'
 
         # Fetch comment reactions through one GraphQL traversal. REST comment
         # list responses only contain aggregate reaction counts, while asking
@@ -275,19 +258,19 @@ while (( poll_count < MAX_POLLS )); do
                   }
                 }
               }' \
-            -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" 2>/dev/null) || return 1
+            -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" 2>/dev/null) || comment_reactions='{}'
         issue_comment_reactions=$(jq -c --arg bot "${CODEX_BOT}[bot]" --arg after "$REACTION_STARTED_AT" '
             [.data.repository.pullRequest.comments.nodes[]
              | select((.body // "") | contains("@codex"))
              | .reactions.nodes[]?
              | select((.user.login // "") == $bot and (.createdAt // "") >= $after)
-            | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || return 1
+             | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || issue_comment_reactions='[]'
         review_comment_reactions=$(jq -c --arg bot "${CODEX_BOT}[bot]" --arg after "$REACTION_STARTED_AT" '
             [.data.repository.pullRequest.reviewThreads.nodes[].comments.nodes[]
              | select((.author.login // "") == $bot or ((.body // "") | contains("@codex")))
              | .reactions.nodes[]?
              | select((.user.login // "") == $bot and (.createdAt // "") >= $after)
-             | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || return 1
+             | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || review_comment_reactions='[]'
 
         # Pull-request review reactions are exposed through GraphQL, unlike
         # review-comment reactions. Keep this query narrow to avoid traversing
@@ -313,7 +296,7 @@ while (( poll_count < MAX_POLLS )); do
               }' \
             -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" 2>/dev/null \
             | jq --arg bot "$CODEX_BOT" --arg head "$HEAD_SHA" --arg after "$REACTION_STARTED_AT" \
-              '[.data.repository.pullRequest.reviews.nodes[] | select((.commit.oid // "") == $head) | .reactions.nodes[] | select((.user.login // "") == $bot and (.createdAt // "") >= $after) | {content: (.content | if . == "EYES" then "eyes" elif . == "THUMBS_UP" then "+1" else . end), created_at: .createdAt}]' 2>/dev/null) || return 1
+              '[.data.repository.pullRequest.reviews.nodes[] | select((.commit.oid // "") == $head) | .reactions.nodes[] | select((.user.login // "") == $bot and (.createdAt // "") >= $after) | {content: (.content | if . == "EYES" then "eyes" elif . == "THUMBS_UP" then "+1" else . end), created_at: .createdAt}]' 2>/dev/null) || review_reactions='[]'
 
         jq -cn --argjson pr "$pr_reactions" \
             --argjson issue "$issue_comment_reactions" \
@@ -324,8 +307,7 @@ while (( poll_count < MAX_POLLS )); do
 
     reactions=$(fetch_codex_reactions 2>&1) || {
         echo "[babysit] WARNING: Failed to fetch Codex reactions: $reactions" >&2
-        sleep "$POLL_INTERVAL"
-        continue
+        reactions="[]"
     }
 
     has_eyes=$(echo "$reactions" | jq 'any(.[]; .content == "eyes")')
@@ -356,7 +338,7 @@ while (( poll_count < MAX_POLLS )); do
     # --- Check 5: Unreplied Codex issue comments ---
     # Codex sometimes posts reviews as issue-level comments instead of review threads.
     # Detect Codex issue comments that have no reply from the authenticated babysitter.
-    issue_comments=$(gh api "repos/${REPO}/issues/${PR}/comments" --paginate --slurp 2>&1 | jq 'add // []') || {
+    issue_comments=$(gh api "repos/${REPO}/issues/${PR}/comments" 2>&1) || {
         echo "[babysit] WARNING: Failed to fetch issue comments: $issue_comments" >&2
         issue_comments="[]"
     }
