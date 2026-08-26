@@ -25,6 +25,11 @@ npm ci
 - `spaces/<name>/.pi/`：各 space 的 Pi 任务状态（完整保留）。
 - `spaces/<name>/AGENTS.md`：space 规则。
 - `pi-tools/pr-status/`：批量读取 GitHub PR 状态的 Pi extension 源码和离线测试。
+- `plugins/mgr/`：按 Agent Plugins 1.0.0 规范打包的 `mgr` 插件，内含唯一权威的 `mgr-babysit-pr` skill。
+
+## mgr Agent Plugin
+
+`plugins/mgr/plugin.json` 遵循 [agent-plugins.org](https://agent-plugins.org/) 的 1.0.0 manifest；skill 位于 `plugins/mgr/skills/mgr-babysit-pr/`。规范只定义可移植目录和组件发现，不规定安装、发布或 registry。agent-plugins.org 当前是规范站点，不是这个插件的下载/安装服务，因此 `init_mgr` 会先要求确认客户端的远程安装能力和已发布来源，再进行全局安装；未发布时必须报告阻塞。发布后请使用兼容客户端文档中的用户级安装命令（Git、归档或私有 registry），安装完成后 skill 可在任意 space 发现。
 
 ## 发布边界
 
