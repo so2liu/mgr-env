@@ -211,6 +211,11 @@ while (( poll_count < MAX_POLLS )); do
         echo "[babysit] Merge conflict detected."
         exit 4
     fi
+    if [ "$mergeable" != "MERGEABLE" ]; then
+        echo "[babysit] (${poll_count}/${MAX_POLLS}) Mergeability unavailable (${mergeable}), retrying..."
+        sleep "$POLL_INTERVAL"
+        continue
+    fi
 
     # --- Check 3: Unresolved review threads + codex history (single GraphQL call) ---
     state=$(fetch_review_state 2>&1) || {
@@ -246,7 +251,7 @@ while (( poll_count < MAX_POLLS )); do
         local review_reactions='[]'
         pr_reactions=$(gh api "repos/${REPO}/issues/${PR}/reactions" --paginate --slurp 2>/dev/null \
             | jq --arg bot "${CODEX_BOT}[bot]" --arg after "$REACTION_STARTED_AT" \
-              '[.[][] | select((.user.login // "") == $bot and (.created_at // "") >= $after) | {content, created_at}]') || pr_reactions='[]'
+              '[.[][] | select((.user.login // "") == $bot and (.created_at // "") >= $after) | {content, created_at}]') || return 1
 
         # Fetch comment reactions through one GraphQL traversal. REST comment
         # list responses only contain aggregate reaction counts, while asking
@@ -270,19 +275,19 @@ while (( poll_count < MAX_POLLS )); do
                   }
                 }
               }' \
-            -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" 2>/dev/null) || comment_reactions='{}'
+            -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" 2>/dev/null) || return 1
         issue_comment_reactions=$(jq -c --arg bot "${CODEX_BOT}[bot]" --arg after "$REACTION_STARTED_AT" '
             [.data.repository.pullRequest.comments.nodes[]
              | select((.body // "") | contains("@codex"))
              | .reactions.nodes[]?
              | select((.user.login // "") == $bot and (.createdAt // "") >= $after)
-             | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || issue_comment_reactions='[]'
+            | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || return 1
         review_comment_reactions=$(jq -c --arg bot "${CODEX_BOT}[bot]" --arg after "$REACTION_STARTED_AT" '
             [.data.repository.pullRequest.reviewThreads.nodes[].comments.nodes[]
              | select((.author.login // "") == $bot or ((.body // "") | contains("@codex")))
              | .reactions.nodes[]?
              | select((.user.login // "") == $bot and (.createdAt // "") >= $after)
-             | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || review_comment_reactions='[]'
+             | {content: (.content | if . == "THUMBS_UP" then "+1" elif . == "EYES" then "eyes" else . end), created_at: .createdAt}]' <<<"$comment_reactions") || return 1
 
         # Pull-request review reactions are exposed through GraphQL, unlike
         # review-comment reactions. Keep this query narrow to avoid traversing
@@ -308,7 +313,7 @@ while (( poll_count < MAX_POLLS )); do
               }' \
             -f owner="$OWNER" -f repo="$NAME" -F pr="$PR" 2>/dev/null \
             | jq --arg bot "$CODEX_BOT" --arg head "$HEAD_SHA" --arg after "$REACTION_STARTED_AT" \
-              '[.data.repository.pullRequest.reviews.nodes[] | select((.commit.oid // "") == $head) | .reactions.nodes[] | select((.user.login // "") == $bot and (.createdAt // "") >= $after) | {content: (.content | if . == "EYES" then "eyes" elif . == "THUMBS_UP" then "+1" else . end), created_at: .createdAt}]' 2>/dev/null) || review_reactions='[]'
+              '[.data.repository.pullRequest.reviews.nodes[] | select((.commit.oid // "") == $head) | .reactions.nodes[] | select((.user.login // "") == $bot and (.createdAt // "") >= $after) | {content: (.content | if . == "EYES" then "eyes" elif . == "THUMBS_UP" then "+1" else . end), created_at: .createdAt}]' 2>/dev/null) || return 1
 
         jq -cn --argjson pr "$pr_reactions" \
             --argjson issue "$issue_comment_reactions" \
@@ -319,7 +324,8 @@ while (( poll_count < MAX_POLLS )); do
 
     reactions=$(fetch_codex_reactions 2>&1) || {
         echo "[babysit] WARNING: Failed to fetch Codex reactions: $reactions" >&2
-        reactions="[]"
+        sleep "$POLL_INTERVAL"
+        continue
     }
 
     has_eyes=$(echo "$reactions" | jq 'any(.[]; .content == "eyes")')
@@ -350,7 +356,7 @@ while (( poll_count < MAX_POLLS )); do
     # --- Check 5: Unreplied Codex issue comments ---
     # Codex sometimes posts reviews as issue-level comments instead of review threads.
     # Detect Codex issue comments that have no reply from the authenticated babysitter.
-    issue_comments=$(gh api "repos/${REPO}/issues/${PR}/comments" --paginate --slurp 2>&1 | jq -s 'add // []') || {
+    issue_comments=$(gh api "repos/${REPO}/issues/${PR}/comments" --paginate --slurp 2>&1 | jq 'add // []') || {
         echo "[babysit] WARNING: Failed to fetch issue comments: $issue_comments" >&2
         issue_comments="[]"
     }
