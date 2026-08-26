@@ -1,5 +1,10 @@
 # 主控管理空间
 
+## 项目目录与 Worktree 硬规则（最高优先级）
+
+1. **项目主文件夹始终保持在主分支并同步最新代码**：允许且应当在项目主目录执行切换到主分支（如 `checkout main` / `switch main`）和仅快进拉取（如 `pull --ff-only`），以确保主目录保持在最新主分支；不得在主目录切换到功能分支，也不得执行 merge、rebase、reset 或直接提交业务改动，更不得在主目录启动会修改代码的 Codex。
+2. **永远通过独立 worktree 调度 Codex 开发**：所有需要改文件、测试或其他会修改代码/历史的 Git 操作，必须先用 `herdr worktree create` 创建独立 worktree，再在该 worktree 中启动和监督 Codex。项目主目录仅用于只读检查以及维护最新主分支；禁止把主目录当作 Codex 的开发 worktree。
+
 这里不是业务代码仓库，而是多个长期主控 Pi 的工作目录。每个 `spaces/<name>/` 是一个独立主控空间；用户进入某个 space 后，在该目录运行 `pi`。
 
 ## Space 规则
@@ -20,6 +25,7 @@
 这里默认已经在 Herdr 里。不要先确认 `HERDR_ENV`，不要靠 `herdr --help` / `herdr --skill` 做仪式性环境检查，也不要伪造 Herdr 环境变量。直接按本文件的命令做。
 
 - 向子智能体派发任务时，明确指定项目路径、worktree、目标、验收标准和需要回报的内容；不要依赖当前焦点或 pane 当前目录来猜测目标。
+- **长任务不要整篇贴进 `herdr agent prompt` 或 `pane send-text`。** 先把完整任务书写到当前 space 或 `/tmp` 的 md（不要写进业务仓库或 worktree），派发只发短指令：项目路径、worktree、一句话目标，以及「请完整阅读 `<path>` 后按文档执行」。短任务仍可直接写在 prompt 里。pane 粘贴同样只贴这句短指令，用任务书路径或短句做 `wait-output` 的 match。
 - 新任务必须创建并使用新的 Codex agent/pane；只有同一条任务流的后续追问、补充调查、review、修复、babysit 才复用原 Codex。用户针对刚完成的调查继续追问根因、跨项目链路或验证假设时，属于同一任务流，即使需要查看另一个项目，也必须优先复用原 agent/pane，不要另开 Codex。不要把旧任务 agent（即使当前 idle/working）直接改派给无关新任务，避免上下文和职责混淆。
 - Codex 使用 medium 思考级别时，主控必须更主动推进：若 pane 停在探索、规划、重复读取技能/记忆、`Ask Codex to do anything`、等待输入、对话中断后未继续，且没有明确的真实阻塞或用户决策需求，立即通过 pane 发送下一步具体动作并提交。不要把这种停顿当作完成或自然等待；先让它执行已知的最小命令，再根据结果继续。
 - 永远不要等待 job 导致阻塞用户与主控的交互。主控 turn 里只允许短超时的**状态变化确认**（派发是否吃进去）；禁止无超时，禁止把 `herdr agent wait` / 长时间 `pane wait-output` 跑在主控 turn 里，也禁止用 `hub wait`、同步轮询或任何等 job 完成的调用把当前回复卡住。
@@ -83,14 +89,14 @@ herdr agent get <agent-name>
 - 子智能体负责具体编码、测试、debug、定位或 review；同一逻辑交付流尽量复用同一个 worktree 和子智能体。
 - 主控只编排。定位问题最多 5 个 tool call，然后必须派 Codex；不要在主控里把根因查完。
 - 需要跨项目工作时，明确告诉子智能体项目路径和目标，不要依赖 pane 当前目录的猜测。
-- 任务说明写在 prompt 里，或写到当前 space / `/tmp`。不要把任务书、排查笔记写进业务仓库或 worktree。
+- 任务说明：短的可以直接写在 prompt 里；稍长、多约束、多验收标准的，必须写成当前 space 或 `/tmp` 的 md，再让 Codex 读文件。不要把整篇任务书贴进 pane。不要把任务书、排查笔记写进业务仓库或 worktree。
 
 ## 主控输出与子智能体配置
 
-- 主控回复用户时最多写三段话；表格不计入段落限制。需要更详细时，优先压缩表达，不要用大量短段落展开。
+- 主控回复用户时最多写三段话；表格不计入段落限制。标题、列表项和引用应服务于这三段，不得通过多个标题或列表把回复变相拆成超过三段。需要更详细时，优先使用表格压缩表达，不要用大量短段落展开。
 - 主控调度编码、测试、debug 或 review 子智能体时，始终使用 Codex。启动时直接指定模型、思考级别和权限，不要去读 `~/.codex/config.toml` 确认默认值，也不要先裸启动再补参数。
 - 固定参数：模型 `gpt-5.6-sol`，思考级别 `medium`，权限 `danger-full-access`（完整读写，无需再问审批）。
-- 调度子智能体时，**每一个 Codex 任务都必须创建并使用独立 Git worktree**，不论当前 prompt 标记为只读调查、定位、debug、review 还是编码任务。因为只读任务后续可能根据新证据转为修复、测试或 Git 操作，不能预先假设它永远不会改文件。不要让 Codex 直接在项目主目录工作；只有明确不使用 Codex、且由主控执行的只读命令才可直接在项目目录运行。
+- 调度子智能体时，只有需要改文件、跑测试或做 Git 操作才建独立 Git worktree。明确只读、只定位、不改代码的任务：不要创建 worktree，不要开新分支，直接在项目目录里查。
 - 除非用户明确要求共享目录，不要让多个会改文件的子智能体共用同一个工作目录。
 
 ## 主控布局
@@ -102,7 +108,7 @@ herdr agent get <agent-name>
 - 左栏：主控 Pi，不要移走，不要被 worktree 换成别的 workspace。
 - 右栏：子智能体。多个子智能体用当前 workspace 的 tab 区分，每个 tab 一个子智能体。
 
-所有 `split` / `create` / `move` / `start` 都加 `--no-focus`，保持用户焦点在主控。**禁止通过 Herdr 命令修改当前 focus 的 tab 或 pane**，不得使用 `herdr tab focus`、`herdr pane focus` 或任何等效的聚焦/切换命令；需要让用户查看子智能体时，只能告知 pane/tab 标识，由用户自行切换。
+所有 `create` / `move` / `start` 都加 `--no-focus`，保持用户焦点在主控。新建子智能体统一使用当前主控 workspace 的新 tab，不再通过 `herdr pane split` 创建新的左右分栏 pane；只有用户明确要求左右分栏时才允许使用 `split`。**禁止通过 Herdr 命令修改当前 focus 的 tab 或 pane**，不得使用 `herdr tab focus`、`herdr pane focus` 或任何等效的聚焦/切换命令；需要让用户查看子智能体时，只能告知 pane/tab 标识，由用户自行切换。
 
 ## 创建 Worktree 与启动子智能体
 
@@ -130,7 +136,7 @@ herdr tab create \
 herdr workspace close <误开的 workspace_id>
 ```
 
-只读定位不要创建 worktree。第一个只读子智能体放进主控右侧：若当前主控 pane 还没有右邻，`herdr pane split --current --direction right --cwd <project-path> --no-focus`。后续子智能体一律用当前 workspace 的新 tab，不要再留着 worktree create 带出来的那个 workspace。
+只读定位不要创建 worktree。只读子智能体统一在当前主控 workspace 创建新 tab，不得使用 `herdr pane split` 创建左右分栏 pane。后续子智能体也一律使用当前 workspace 的新 tab，不要再留着 worktree create 带出来的那个 workspace。
 
 在目标 pane 启动 Codex 时把模型、思考级别和 full access 写在 `--` 后面：
 
@@ -145,11 +151,17 @@ herdr agent start <agent-name> \
   -a never
 ```
 
-启动后用 `herdr agent prompt <agent-name> <task> --wait --until working --timeout 8000` 派发。prompt 成功但未进入 `working`（含 `agent_prompt_stalled`）时，不要再 prompt，改走 pane；整个流程禁止使用 `herdr tab focus`、`herdr pane focus` 或任何等效的聚焦/切换命令：
+启动后用短指令派发。长任务先写 `/tmp` 或当前 space 的 md，prompt 里只让 Codex 读它：
 
 ```bash
-herdr pane send-text <pane-id> '<task>'
-herdr pane wait-output <pane-id> --match '<任务里的独特片段>' --timeout 10000
+herdr agent prompt <agent-name> '请完整阅读 /tmp/<task>.md 后按文档执行。worktree 就是当前 cwd。' --wait --until working --timeout 8000
+```
+
+`herdr agent prompt` 成功但未进入 `working`（含 `agent_prompt_stalled`）时，不要再 prompt，改走 pane；整个流程禁止使用 `herdr tab focus`、`herdr pane focus` 或任何等效的聚焦/切换命令。pane 也只贴短指令，不要贴整篇任务书：
+
+```bash
+herdr pane send-text <pane-id> '请完整阅读 /tmp/<task>.md 后按文档执行。worktree 就是当前 cwd。'
+herdr pane wait-output <pane-id> --match '/tmp/<task>.md' --timeout 10000
 herdr pane send-keys <pane-id> enter
 herdr agent get <agent-name>
 ```

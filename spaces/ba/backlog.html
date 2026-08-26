@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>ba backlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { max-width: 900px; margin: 40px auto; padding: 0 20px; font: 16px/1.6 system-ui, sans-serif; color: #222; }
+    h1 { font-size: 28px; }
+    li { margin: 12px 0; }
+  </style>
+</head>
+<body>
+  <h1>ba</h1>
+  <p>负责 blade-agent。这里只记录粗粒度事项，不记录 worker、pane、worktree 或实时状态。</p>
+  <ul>
+    <li>app-dev 仍路由 <code>intelligent-app</code>，它不是 rename 成 <code>connect-blade-agent-frontend</code> 的残留。以后若要清，改角色提示词和 start-app 路由，并从 role.yaml 去掉该 local skill；已有 session 需重建或 resync。</li>
+  </ul>
+</body>
+</html>
