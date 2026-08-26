@@ -2,6 +2,8 @@
 
 这是 `~/mgr` 主控管理空间的可公开快照，不是业务代码仓库。它保留 Pi 配置、提示词、各级 `AGENTS.md`、主控工具源码，以及 `spaces/` 下的目录骨架，便于在新机器上恢复相同的工作环境。
 
+主控行为规范位于 `spaces/AGENTS.md`（即 mgr 主控如何拆任务、委派 Codex、检查结果、汇报的完整规则）。mgr 根目录不保留 `AGENTS.md`，避免它作为仓库文件被 mgr 的 worktree 复制、导致 worker 误以为自己是主控。主控在 `spaces/<name>/` 下启动时，Pi 会向上逐层读到 `spaces/AGENTS.md` 与 `spaces/<name>/AGENTS.md`。
+
 ## Clone 后恢复
 
 ```bash
@@ -23,7 +25,8 @@ npm ci
 
 - `.pi/`：根级 Pi prompts（完整保留）。
 - `spaces/<name>/.pi/`：各 space 的 Pi 任务状态（完整保留）。
-- `spaces/<name>/AGENTS.md`：space 规则。
+- `spaces/AGENTS.md`：主控行为规范（全仓库主控职责与协作方式）。
+- `spaces/<name>/AGENTS.md`：各 space 的规则。
 - `pi-tools/pr-status/`：批量读取 GitHub PR 状态的 Pi extension 源码和离线测试。
 
 ## 发布边界
