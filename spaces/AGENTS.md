@@ -38,6 +38,7 @@ herdr agent wait <agent-name>
 
   不带 `--until` 时匹配 `idle`、`done`、`blocked`。后台、未聚焦的子智能体收工后是 `done` 不是 `idle`；`--until idle` 会一直等到超时。不要给 `herdr agent wait` 加短超时；让它无限等。需要安全上限时只设 `bg_run` 的 `timeoutSeconds`，编码/排查至少 2 小时。
 - 后台等待器只负责等待和通知，不拥有子智能体的生命周期。即使等待器结束或被停止，Herdr 中的子智能体和 worktree 仍应独立存在并可继续恢复。
+- **等待器完成不等于任务实际完成**：收到 `herdr agent wait` 成功/完成通知后，必须检查原 agent 的最终状态、worktree 实际文件改动、`git status`、提交、推送和 PR；不能只相信等待器或 Codex 的总结。若没有预期改动、提交或 PR，应判定为任务未完成/误报，并继续核查或重新执行。
 - `/reload` 会 SIGTERM 掉当前会话的 `bg_run` 等待器，元数据写成 `Killed during Pi session shutdown/reload`，且 `notified: false`，所以不会自动唤醒主控。子智能体本身还在。reload 后必须检查还在跑的 Herdr Agent，给仍 `working` 的任务重挂 `herdr agent wait`；已经 `done`/`idle` 的直接收结果，不要等一份已经死掉的通知。
 - 不要把没有等待器的“放到后台”当成完成通知机制：直接派发后，主控不会自动得知 Agent 何时 settled，除非主动查询 `herdr agent get/read/wait`。
 - 已经确认任务进入工作态后，再启动 `herdr agent wait <agent-name>`。如果任务尚未真正接受，优先使用能同时提交并等待状态变化的后台命令，避免在 Agent 仍未启动时误判完成。
@@ -125,7 +126,19 @@ result=$(herdr worktree create \
   --no-focus)
 ```
 
-从 JSON 读取 `worktree.path` 和误开的 `workspace_id`。立刻在当前主控 workspace 建 tab 指向这个 worktree，然后关掉误开的 workspace：
+从 JSON 读取 `worktree.path` 和误开的 `workspace_id`。立刻在当前主控 workspace 建 tab 指向这个 worktree，然后关掉误开的 workspace。`herdr worktree create` 失败（尤其是 Git config lock、分支已存在或上游设置失败）时，不得继续使用其输出中的路径/ID；先检查命令退出码、worktree 是否真实存在、分支和 Git 状态，再在确认没有半成品/锁冲突后重试：
+
+```bash
+herdr worktree create ...
+rc=$?
+if [ "$rc" -ne 0 ]; then
+  git -C <project-path> worktree list
+  git -C <project-path> branch --list '<branch-name>'
+  exit "$rc"
+fi
+```
+
+确认创建成功后，再从 JSON 读取 `worktree.path` 和误开的 `workspace_id`，立刻在当前主控 workspace 建 tab 指向这个 worktree，然后关掉误开的 workspace：
 
 ```bash
 herdr tab create \
