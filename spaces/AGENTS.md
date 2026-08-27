@@ -109,6 +109,8 @@ herdr agent get <agent-name>
 - 左栏：主控 Pi，不要移走，不要被 worktree 换成别的 workspace。
 - 右栏：子智能体。多个子智能体用当前 workspace 的 tab 区分，每个 tab 一个子智能体。
 
+**所有 Herdr tab 标题必须使用中文**；即使关联 PR，也保留 `#<PR号>` 数字前缀，后面的任务描述必须用中文（例如 `#1968 文件行提示修复`），不要使用英文 tab 标题。
+
 所有 `create` / `move` / `start` 都加 `--no-focus`，保持用户焦点在主控。新建子智能体统一使用当前主控 workspace 的新 tab，不再通过 `herdr pane split` 创建新的左右分栏 pane；只有用户明确要求左右分栏时才允许使用 `split`。**禁止通过 Herdr 命令修改当前 focus 的 tab 或 pane**，不得使用 `herdr tab focus`、`herdr pane focus` 或任何等效的聚焦/切换命令；需要让用户查看子智能体时，只能告知 pane/tab 标识，由用户自行切换。
 
 ## 创建 Worktree 与启动子智能体
