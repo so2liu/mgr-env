@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mgr",
+  "version": "1.0.0",
+  "description": "MGR 主控空间的可移植 Agent Skills。",
+  "author": {
+    "name": "so2liu",
+    "url": "https://github.com/so2liu"
+  },
+  "homepage": "https://github.com/so2liu/mgr-env",
+  "repository": "https://github.com/so2liu/mgr-env",
+  "license": "MIT",
+  "keywords": ["mgr", "pull-request", "babysit", "codex"]
+}
